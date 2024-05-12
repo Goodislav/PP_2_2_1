@@ -13,11 +13,13 @@ public class Car {
     String model;
     @Column(name="series")
     int series;
+    @OneToOne
+    @JoinColumn
+    private User user;
 
     public Car() {}
 
-    public Car(Long car_id, String model, int series) {
-        this.car_id = car_id;
+    public Car(String model, int series) {
         this.model = model;
         this.series = series;
     }
