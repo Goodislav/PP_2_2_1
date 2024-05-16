@@ -8,20 +8,24 @@ public class Car {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long car_id;
+    @Column(name="id")
+    private Long id;
     @Column(name="model")
     String model;
     @Column(name="series")
     int series;
-    @OneToOne
-    @JoinColumn
-    private User user;
 
     public Car() {}
 
     public Car(String model, int series) {
         this.model = model;
         this.series = series;
+    }
+    public Long getId() {
+        return id;
+    }
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getModel() {
@@ -39,12 +43,10 @@ public class Car {
     public void setSeries(int series) {
         this.series = series;
     }
-
-    public void setCar_id(Long carId) {
-        this.car_id = carId;
-    }
-
-    public Long getCar_id() {
-        return car_id;
+    @Override
+    public String toString() {
+        return  "Id = " + getId() + "\n" +
+                "Model = " + getModel() + "\n" +
+                "Series = " + getSeries();
     }
 }
